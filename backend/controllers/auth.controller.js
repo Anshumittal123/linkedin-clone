@@ -70,5 +70,6 @@ export const login = (req, res)=>{
 }
 
 export const logout = (req, res) =>{
-    res.send("logout");
+    res.clearCookie("jwt-linkedin");
+    res.json({message: "logged out successfully."});
 }

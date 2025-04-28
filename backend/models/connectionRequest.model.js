@@ -2,14 +2,14 @@ import mongoose from "mongoose";
 
 const connectRequestSchema = new mongoose.Schema({
         sender: {
-            type: mongoose.Schema.Type.ObjectId,
-            ref: "User",
-            required: true
+            type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
+			required: true,
         },
         recipient: {
-            type: mongoose.Schema.Type.ObjectId,
-            ref: "User",
-            required: true
+            type: mongoose.Schema.Types.ObjectId,
+			ref: "User",
+			required: true,
         },
         status: {
             type: String,

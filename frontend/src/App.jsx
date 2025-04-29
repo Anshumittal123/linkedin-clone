@@ -1,5 +1,9 @@
 import Layout from "./components/layout/Layout"
 import { Route, Routes } from "react-router-dom"
+import HomePage from "./pages/HomePage.jsx"
+import SignUpPage from "./pages/auth/SignUpPage.jsx"
+import LoginPage from "./pages/auth/LoginPage.jsx"
+
 
 function App() {
 

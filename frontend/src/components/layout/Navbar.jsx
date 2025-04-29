@@ -1,5 +1,5 @@
 const Navbar = () =>{
-    return <div>Navbar</div>
+    return <div className="text-black">Navbar</div>
 };
 
 export default Navbar;

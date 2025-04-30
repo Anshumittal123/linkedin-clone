@@ -47,7 +47,7 @@ export const signup = async (req, res) =>{
             secure: process.env.NODE_ENV === "production", // prevents man-in-the-middle attacks.
         })
 
-        res.status(201).json({message: "User registered successfully."})
+        // res.status(201).json({message: "User registered successfully."})
 
         const profileUrl = process.env.CLIENT_URL+"/profile/"+user.username
 
@@ -55,13 +55,14 @@ export const signup = async (req, res) =>{
         try {
             await sendWelcomeEmail(user.email, user.name, profileUrl)
         } catch (emailError) {
-            console.log("Error sending welcome email:", emailError.message);
-            res.status(500).json({message: ""})
+            console.error("Error sending welcome email:", emailError.message);
         }
+
+        res.status(201).json({ message: "User created successfully", user });
 
     } catch (error) {
         console.log("Error in signup: ", error.message);
-        res.status(500).json({message: "Internal server error"})
+        res.status(500).json({ message: "Signup failed", error: err.message });
     }
 }
 

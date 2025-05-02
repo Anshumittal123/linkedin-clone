@@ -79,7 +79,7 @@ const Navbar = () =>{
 									<span className='text-xs hidden md:block'>Me</span>
 								</Link>
 								<button
-									className='flex items-center space-x-1 text-sm text-gray-600 hover:text-gray-800'
+									className='flex items-center cursor-pointer space-x-1 text-sm text-gray-600 hover:text-gray-800'
 									onClick={() => logout()}
 								>
 									<LogOut size={20} />

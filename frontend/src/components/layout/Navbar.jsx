@@ -1,6 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosInstance } from "../../lib/axios";
-import { Bell, Home, Link, LogOut, User, Users } from "lucide-react";
+import { BellRing, House, LogOut, UserRound, UsersRound } from "lucide-react";
+import { Link } from 'react-router-dom';
 
 const Navbar = () =>{
     const queryClient = useQueryClient();
@@ -27,26 +28,27 @@ const Navbar = () =>{
 
     const unreadNotificationCount = notifications?.data.filter((notif) => !notif.read).length;
 	const unreadConnectionRequestsCount = connectionRequests?.data?.length;
-
+    console.log("Unread notification count: ", unreadNotificationCount);
+	console.log("Unread connection request count: ", unreadConnectionRequestsCount);
 
     return (
-        <nav className='bg-secondary shadow-md sticky top-0 z-10'>
+        <nav className='bg-white shadow-md sticky top-0 z-10'>
 			<div className='max-w-7xl mx-auto px-4'>
 				<div className='flex justify-between items-center py-3'>
 					<div className='flex items-center space-x-4'>
 						<Link to='/'>
-							<img className='h-8 rounded' src='/small-logo.png' alt='LinkedIn' />
+							<img className='h-10 rounded' src='/IACNetworkHubLogo.png' alt='IACNetworkHub' />
 						</Link>
 					</div>
 					<div className='flex items-center gap-2 md:gap-6'>
 						{authUser ? (
 							<>
 								<Link to={"/"} className='text-neutral flex flex-col items-center'>
-									<Home size={20} />
+									<House size={20} />
 									<span className='text-xs hidden md:block'>Home</span>
 								</Link>
 								<Link to='/network' className='text-neutral flex flex-col items-center relative'>
-									<Users size={20} />
+									<UsersRound size={20} />
 									<span className='text-xs hidden md:block'>My Network</span>
 									{unreadConnectionRequestsCount > 0 && (
 										<span
@@ -58,7 +60,7 @@ const Navbar = () =>{
 									)}
 								</Link>
 								<Link to='/notifications' className='text-neutral flex flex-col items-center relative'>
-									<Bell size={20} />
+									<BellRing size={20} />
 									<span className='text-xs hidden md:block'>Notifications</span>
 									{unreadNotificationCount > 0 && (
 										<span
@@ -73,7 +75,7 @@ const Navbar = () =>{
 									to={`/profile/${authUser.username}`}
 									className='text-neutral flex flex-col items-center'
 								>
-									<User size={20} />
+									<UserRound size={20} />
 									<span className='text-xs hidden md:block'>Me</span>
 								</Link>
 								<button

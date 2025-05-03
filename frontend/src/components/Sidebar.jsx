@@ -3,10 +3,10 @@ import { Home, UserPlus, Bell } from "lucide-react";
 
 export default function Sidebar({ user }) {
 	return (
-		<div className='bg-white rounded-lg shadow'>
+		<div className='bg-white rounded-lg shadow text-black'>
 			<div className='p-4 text-center'>
 				<div
-					className='h-16 rounded-t-lg bg-cover bg-center'
+					className='h-16 rounded-t-lg bg-cover bg-center bg-gray-700'
 					style={{
 						backgroundImage: `url("${user.bannerImg || "/banner.png"}")`,
 					}}
@@ -19,8 +19,8 @@ export default function Sidebar({ user }) {
 					/>
 					<h2 className='text-xl font-semibold mt-2'>{user.name}</h2>
 				</Link>
-				<p className='text-info'>{user.headline}</p>
-				<p className='text-info text-xs'>{user.connections.length} connections</p>
+				<p className='text-gray-400'>{user.headline}</p>
+				<p className='text-gray-400 text-xs'>{user.connections.length} connections</p>
 			</div>
 			<div className='border-t border-base-100 p-4'>
 				<nav>

@@ -3,6 +3,9 @@ import React from 'react'
 import { axiosInstance } from '../lib/axios'
 import Sidebar from '../components/Sidebar';
 import { Users } from 'lucide-react';
+import PostCreation from '../components/PostCreation';
+import Post from '../components/Post.jsx';
+import RecommendedUser from '../components/RecommendedUser';
 
 const HomePage = () => {
   const queryClient = useQueryClient();
@@ -34,7 +37,7 @@ const HomePage = () => {
 				<Sidebar user={authUser} />
 			</div>
 
-			{/* <div className='col-span-1 lg:col-span-2 order-first lg:order-none'>
+			<div className='col-span-1 lg:col-span-2 order-first lg:order-none'>
 				<PostCreation user={authUser} />
 
 				{posts?.map((post) => (
@@ -54,14 +57,14 @@ const HomePage = () => {
 
 			{recommendedUsers?.length > 0 && (
 				<div className='col-span-1 lg:col-span-1 hidden lg:block'>
-					<div className='bg-secondary rounded-lg shadow p-4'>
+					<div className='bg-white rounded-lg shadow p-4 text-black'>
 						<h2 className='font-semibold mb-4'>People you may know</h2>
 						{recommendedUsers?.map((user) => (
 							<RecommendedUser key={user._id} user={user} />
 						))}
 					</div>
 				</div>
-			)} */}
+			)}
 		</div>
   )
 }

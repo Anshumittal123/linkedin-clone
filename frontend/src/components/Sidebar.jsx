@@ -6,7 +6,7 @@ export default function Sidebar({ user }) {
 		<div className='bg-white rounded-lg shadow text-black'>
 			<div className='p-4 text-center'>
 				<div
-					className='h-16 rounded-t-lg bg-cover bg-center bg-gray-700'
+					className='h-16 rounded-t-lg bg-cover bg-center'
 					style={{
 						backgroundImage: `url("${user.bannerImg || "/banner.png"}")`,
 					}}

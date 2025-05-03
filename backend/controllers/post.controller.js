@@ -5,7 +5,7 @@ import { sendCommentNotificationEmail } from '../emails/emailHandlers.js';
 
 export const getFeedPosts = async (req, res)=>{
     try {
-        const posts = await Post.find({ author: { $in: req.user.connections }})
+        const posts = await Post.find({ author: { $in: [...req.user.connections, req.user._id] }})
         .populate("author", "name username profilePicture headline")
         .populate("comments.user", "name profilePicture")
         .sort({ createdAt: -1 });
@@ -167,3 +167,27 @@ export const likePost = async (req, res)=>{
         res.status(500).json("server error");
     }
 }
+
+export const sharePostWithUser = async (req, res) => {
+    try {
+      const postId = req.params.id;
+      const { recipientId, method } = req.body; // method: 'in-app', 'email', etc.
+      const senderId = req.user._id;
+  
+      // Optional: log this action or send notification
+      const notification = new Notification({
+        recipient: recipientId,
+        type: "share",
+        relatedUser: senderId,
+        relatedPost: postId,
+        method,
+      });
+  
+      await notification.save();
+      res.status(200).json({ message: "Post shared successfully!" });
+    } catch (err) {
+      console.error("Error sharing post:", err);
+      res.status(500).json({ error: "Server error while sharing post" });
+    }
+  };
+  

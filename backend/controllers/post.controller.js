@@ -5,10 +5,15 @@ import { sendCommentNotificationEmail } from '../emails/emailHandlers.js';
 
 export const getFeedPosts = async (req, res)=>{
     try {
-        const posts = await Post.find({ author: { $in: [...req.user.connections, req.user._id] }})
-        .populate("author", "name username profilePicture headline")
-        .populate("comments.user", "name profilePicture")
-        .sort({ createdAt: -1 });
+        // const posts = await Post.find({ author: { $in: [...req.user.connections, req.user._id] }})
+        // .populate("author", "name username profilePicture headline")
+        // .populate("comments.user", "name profilePicture")
+        // .sort({ createdAt: -1 });
+
+        const posts = await Post.find()
+            .populate("author", "name username profilePicture headline")
+            .populate("comments.user", "name profilePicture")
+            .sort({ createdAt: -1 });
 
         res.status(200).json(posts);
     } catch (error) {

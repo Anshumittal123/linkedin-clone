@@ -16,15 +16,6 @@ const Post  = ({ post }) => {
 	  const authUser = queryClient.getQueryData(["authUser"]);
 	  
 
-	// const { data: authUser } = useQuery({
-	// 	queryKey: ["authUser"],
-	// 	queryFn: async () => {
-	// 	  const { data } = await axiosInstance.get("/auth/me");  // Adjust endpoint based on your backend
-	// 	  return data;
-	// 	},
-	//   });
-
-
 	const [showComments, setShowComments] = useState(false);
 	const [newComment, setNewComment] = useState("");
 	const [comments, setComments] = useState(post.comments || []);

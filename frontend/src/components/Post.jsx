@@ -177,7 +177,7 @@ const Post  = ({ post }) => {
 
 						<button
 							type='submit'
-							className='bg-primary text-white p-2 rounded-r-full hover:bg-primary-dark transition duration-300'
+							className='bg-primary text-white p-2 rounded-r-full hover:bg-primary-dark transition duration-300 cursor-pointer'
 							disabled={isAddingComment}
 						>
 							{isAddingComment ? <Loader size={24} className='animate-spin' /> : <Send size={24} />}

@@ -9,6 +9,7 @@ import toast, { Toaster } from "react-hot-toast"
 import { axiosInstance } from "./lib/axios";
 import NetworkPage from "./pages/NetworkPage.jsx"
 import PostPage from "./pages/PostPage.jsx"
+import ProfilePage from "./pages/ProfilePage.jsx"
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
 	  <Route path='/notifications' element={authUser ? <NotificationsPage /> : <Navigate to={"/login"} />} />
 	  <Route path='/network' element={authUser ? <NetworkPage /> : <Navigate to={"/login"} />} />
 	  <Route path='/post/:postId' element={authUser ? <PostPage /> : <Navigate to={"/login"} />} />
+	  <Route path='/profile/:username' element={authUser ? <ProfilePage /> : <Navigate to={"/login"} />} />
     </Routes>
 	<Toaster position="bottom-right" reverseOrder={false} />
   </Layout>

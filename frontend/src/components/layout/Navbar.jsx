@@ -1,6 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { axiosInstance } from "../../lib/axios";
-import { BellRing, House, LogOut, UserRound, UsersRound } from "lucide-react";
+import { BellRing,
+	Briefcase,
+	House,
+	LogOut,
+	UserRound, 
+	UsersRound } from "lucide-react";
 import { Link } from 'react-router-dom';
 
 const Navbar = () =>{
@@ -58,6 +63,10 @@ const Navbar = () =>{
 											{unreadConnectionRequestsCount}
 										</span>
 									)}
+								</Link>
+								<Link to={"/jobs"} className='text-neutral flex flex-col items-center'>
+									<Briefcase size={20} />
+									<span className='text-xs hidden md:block'>Jobs</span>
 								</Link>
 								<Link to='/notifications' className='text-neutral flex flex-col items-center relative'>
 									<BellRing size={20} />

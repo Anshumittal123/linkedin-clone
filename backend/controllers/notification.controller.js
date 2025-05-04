@@ -35,11 +35,16 @@ export const markNotificationAsRead = async (req, res) =>{
 export const deleteNotification = async (req, res) =>{
     const notificationId = req.params.id;
     try {
-       await Notification.findByIdAndUpdate({
-            _id: notificationId, recipient: req.user.id
-        });
+        const deletedNotification = await Notification.findOneAndDelete({
+            _id: notificationId,
+            recipient: req.user.id,
+        }); 
 
-        res.status(200).json({message: "Notification deleted successfully."});
+        if (!deletedNotification) {
+            return res.status(404).json({ message: "Notification not found or unauthorized" }); 
+        }
+
+        res.status(200).json({ message: "Notification deleted successfully." });
 
     } catch (error) {
         console.error("Error in deleteNotification controller: ", error);   

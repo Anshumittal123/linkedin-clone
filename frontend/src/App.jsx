@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from "react-router-dom"
 import HomePage from "./pages/HomePage.jsx"
 import SignUpPage from "./pages/auth/SignUpPage.jsx"
 import LoginPage from "./pages/auth/LoginPage.jsx"
+import NotificationsPage from "./pages/NotificationsPage.jsx"
 import {useQuery} from "@tanstack/react-query";
 import toast, { Toaster } from "react-hot-toast"
 import { axiosInstance } from "./lib/axios";
@@ -34,6 +35,7 @@ function App() {
       <Route path='/' element={authUser ? <HomePage/> : <Navigate to={"/login"}/>}/>
       <Route path='/signup' element={!authUser ? <SignUpPage/> : <Navigate to={"/"}/>}/>
       <Route path='/login' element={!authUser ? <LoginPage/> : <Navigate to={"/"}/>}/>
+	  <Route path='/notifications' element={authUser ? <NotificationsPage /> : <Navigate to={"/login"} />} />
     </Routes>
 	<Toaster position="bottom-right" reverseOrder={false} />
   </Layout>

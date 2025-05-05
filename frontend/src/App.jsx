@@ -10,6 +10,8 @@ import { axiosInstance } from "./lib/axios";
 import NetworkPage from "./pages/NetworkPage.jsx"
 import PostPage from "./pages/PostPage.jsx"
 import ProfilePage from "./pages/ProfilePage.jsx"
+import JobApplyPage from "./pages/JobApplyPage.jsx"
+import MessagePage from "./pages/MessagePage.jsx"
 
 
 function App() {
@@ -42,6 +44,8 @@ function App() {
 	  <Route path='/network' element={authUser ? <NetworkPage /> : <Navigate to={"/login"} />} />
 	  <Route path='/post/:postId' element={authUser ? <PostPage /> : <Navigate to={"/login"} />} />
 	  <Route path='/profile/:username' element={authUser ? <ProfilePage /> : <Navigate to={"/login"} />} />
+	  <Route path='/jobs' element={authUser ? <JobApplyPage /> : <Navigate to={"/login"} />} />
+	  <Route path='/messages' element={authUser ? <MessagePage /> : <Navigate to={"/login"} />} />
     </Routes>
 	<Toaster position="bottom-right" reverseOrder={false} />
   </Layout>

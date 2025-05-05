@@ -4,6 +4,7 @@ import { BellRing,
 	Briefcase,
 	House,
 	LogOut,
+	MessageSquareMore,
 	UserRound, 
 	UsersRound } from "lucide-react";
 import { Link } from 'react-router-dom';
@@ -24,6 +25,12 @@ const Navbar = () =>{
         enabled: !!authUser
     })
 
+	const {data: messageRequests} = useQuery({
+		queryKey: ["messagRequests"],
+		queryFn: async() => axiosInstance.get("/messages"),
+		enabled: !!authUser
+	})
+
     const { mutate: logout } = useMutation({
 		mutationFn: () => axiosInstance.post("/auth/logout"),
 		onSuccess: () => {
@@ -33,6 +40,10 @@ const Navbar = () =>{
 
     const unreadNotificationCount = notifications?.data.filter((notif) => !notif.read).length;
 	const unreadConnectionRequestsCount = connectionRequests?.data?.length;
+
+	const unreadMessageCount = messageRequests?.data?.length;
+	console.log("Unread message count: ", unreadMessageCount);
+
     console.log("Unread notification count: ", unreadNotificationCount);
 	console.log("Unread connection request count: ", unreadConnectionRequestsCount);
 
@@ -61,6 +72,18 @@ const Navbar = () =>{
 										rounded-full size-3 md:size-4 flex items-center justify-center'
 										>
 											{unreadConnectionRequestsCount}
+										</span>
+									)}
+								</Link>
+								<Link to='/messages' className='text-neutral flex flex-col items-center relative'>
+									<MessageSquareMore size={20} />
+									<span className='text-xs hidden md:block'>message</span>
+									{unreadMessageCount > 0 && (
+										<span
+											className='absolute -top-1 -right-1 md:right-2 bg-blue-500 text-white text-xs 
+										rounded-full size-3 md:size-4 flex items-center justify-center'
+										>
+											{unreadMessageCount}
 										</span>
 									)}
 								</Link>
@@ -97,7 +120,7 @@ const Navbar = () =>{
 							</>
 						) : (
 							<>
-								<Link to='/login' className='btn btn-ghost'>
+								<Link to='/login' className='btn btn-ghost text-black hover:text-white'>
 									Sign In
 								</Link>
 								<Link to='/signup' className='btn btn-primary'>

@@ -25,11 +25,6 @@ const Navbar = () =>{
         enabled: !!authUser
     })
 
-	const {data: messageRequests} = useQuery({
-		queryKey: ["messagRequests"],
-		queryFn: async() => axiosInstance.get("/messages"),
-		enabled: !!authUser
-	})
 
     const { mutate: logout } = useMutation({
 		mutationFn: () => axiosInstance.post("/auth/logout"),
@@ -38,10 +33,23 @@ const Navbar = () =>{
 		},
 	});
 
+	const { data: unreadCount } = useQuery({
+		queryKey: ["unreadMessageCount"],
+		queryFn: async () => {
+		  const res = await axiosInstance.get("/messages/unread/count");
+		  return res.data.count;
+		},
+		enabled: !!authUser,
+	  });
+	  
+	  const unreadMessageCount = unreadCount || 0;
+	  
+	   
+	  
+
     const unreadNotificationCount = notifications?.data.filter((notif) => !notif.read).length;
 	const unreadConnectionRequestsCount = connectionRequests?.data?.length;
 
-	const unreadMessageCount = messageRequests?.data?.length;
 	console.log("Unread message count: ", unreadMessageCount);
 
     console.log("Unread notification count: ", unreadNotificationCount);

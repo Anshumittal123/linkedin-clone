@@ -5,7 +5,7 @@ import MessageInput from './MessageInput';
 import MessageSkeleton from './skeletons/MessageSkeleton';
 import { useQueryClient } from '@tanstack/react-query';
 import { formatMessageTime } from '../utils/dataUtils';
-import {axiosInstance }from '../lib/axios.js'; // ✅ Make sure this path is correct
+import {axiosInstance }from '../lib/axios.js'; 
 
 const ChatContainer = () => {
     const queryClient = useQueryClient();
@@ -13,23 +13,23 @@ const ChatContainer = () => {
     const { messages, getMessages, isMessagesLoading, selectedUser } = useChatStore();
     const messageEndRef = useRef(null);
 
-    // ✅ Function to mark messages as read
+    
     const markMessagesAsRead = async () => {
         try {
             if (selectedUser?._id) {
                 await axiosInstance.put(`/messages/mark-as-read/${selectedUser._id}`);
-                queryClient.invalidateQueries(["unreadMessageCount"]); // ⟳ Refresh count in navbar
+                queryClient.invalidateQueries(["unreadMessageCount"]); 
             }
         } catch (error) {
             console.error("Failed to mark messages as read:", error);
         }
     };
 
-    // ✅ Fetch messages and mark as read when selectedUser changes
+    
     useEffect(() => {
         if (selectedUser?._id) {
             getMessages(selectedUser._id);
-            markMessagesAsRead(); // ✅ mark as read on chat open
+            markMessagesAsRead(); 
         }
     }, [selectedUser._id, getMessages]);
 

@@ -8,11 +8,10 @@ const router = express.Router();
 
 router.get("/", protectRoute, getRecentConversations);
 router.get("/users", protectRoute, getUsersForSidebar);
-router.get("/:id", protectRoute, getMessages);
 router.get("/unread/count", protectRoute, getUnreadMessageCount);
-
 router.post("/send/:id", protectRoute, sendMessage);
-
 router.put("/mark-as-read/:id", protectRoute, markMessagesAsRead);
+
+router.get("/:id", protectRoute, getMessages);
 
 export default router;

@@ -1,4 +1,4 @@
-import Layout from "./components/layout/Layout"
+import Layout from "./components/layout/Layout.jsx"
 import { Navigate, Route, Routes } from "react-router-dom"
 import HomePage from "./pages/HomePage.jsx"
 import SignUpPage from "./pages/auth/SignUpPage.jsx"

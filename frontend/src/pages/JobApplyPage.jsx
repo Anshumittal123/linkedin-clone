@@ -56,7 +56,7 @@ const JobApplyPage = () => {
 
       <div className="grid gap-6">
         {filteredJobs.map((job) => (
-          <div key={job.id} className="w-full md:w-[90%] lg:w-[80%] mx-auto bg-white shadow p-4 rounded-lg">
+          <div key={job.id} className="w-[80vw] bg-white shadow p-4 rounded-lg">
             <h3 className="text-xl font-semibold text-black">{job.position}</h3>
             <p className="text-gray-600">{job.company} — {job.location}</p>
             <div

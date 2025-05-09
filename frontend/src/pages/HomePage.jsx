@@ -27,8 +27,6 @@ const HomePage = () => {
 		},
 	});
 
-	console.log("posts", posts);
-  console.log("recommendedUser: ", recommendedUsers);
 
 
   return (

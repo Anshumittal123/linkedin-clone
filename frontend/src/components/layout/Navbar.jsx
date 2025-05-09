@@ -50,11 +50,6 @@ const Navbar = () =>{
     const unreadNotificationCount = notifications?.data.filter((notif) => !notif.read).length;
 	const unreadConnectionRequestsCount = connectionRequests?.data?.length;
 
-	console.log("Unread message count: ", unreadMessageCount);
-
-    console.log("Unread notification count: ", unreadNotificationCount);
-	console.log("Unread connection request count: ", unreadConnectionRequestsCount);
-
     return (
         <nav className='bg-white shadow-md sticky top-0 z-10'>
 			<div className='max-w-7xl mx-auto px-4'>
@@ -77,7 +72,7 @@ const Navbar = () =>{
 									{unreadConnectionRequestsCount > 0 && (
 										<span
 											className='absolute -top-1 -right-1 md:right-4 bg-blue-500 text-white text-xs 
-										rounded-full size-3 md:size-4 flex items-center justify-center'
+										rounded-full size-4 md:size-4 flex items-center justify-center'
 										>
 											{unreadConnectionRequestsCount}
 										</span>
@@ -89,7 +84,7 @@ const Navbar = () =>{
 									{unreadMessageCount > 0 && (
 										<span
 											className='absolute -top-1 -right-1 md:right-2 bg-blue-500 text-white text-xs 
-										rounded-full size-3 md:size-4 flex items-center justify-center'
+										rounded-full size-4 md:size-4 flex items-center justify-center'
 										>
 											{unreadMessageCount}
 										</span>
@@ -105,7 +100,7 @@ const Navbar = () =>{
 									{unreadNotificationCount > 0 && (
 										<span
 											className='absolute -top-1 -right-1 md:right-4 bg-blue-500 text-white text-xs 
-										rounded-full size-3 md:size-4 flex items-center justify-center'
+										rounded-full size-4 md:size-4 flex items-center justify-center'
 										>
 											{unreadNotificationCount}
 										</span>

@@ -6,7 +6,6 @@ import { Users } from 'lucide-react';
 const ChatSidebar = () => {
     const {getUsers, users, selectedUser, setSelectedUser, isUsersLoading} = useChatStore();
 
-    console.log("User data:- ",users);
     
     useEffect(()=>{
         getUsers();
@@ -16,7 +15,7 @@ const ChatSidebar = () => {
 
     
   return (
-    <aside className="h-full w-30 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200">
+    <aside className="h-full w-25 lg:w-72 border-r border-base-300 flex flex-col transition-all duration-200">
          <div className="border-b border-base-300 w-full p-5">
          <div className="flex items-center gap-2">
          <Users className="size-6" />
@@ -39,7 +38,7 @@ const ChatSidebar = () => {
               <img
                 src={user.profilePicture || "/avatar.png"}
                 alt={user.name}
-                className="size-12 object-cover rounded-full"
+                className="size-8 object-cover rounded-full"
               />
             </div>
 
